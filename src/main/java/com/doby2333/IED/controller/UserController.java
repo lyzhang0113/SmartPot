@@ -15,28 +15,29 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = {"/", "/hello", "/welcome"})
+    @RequestMapping(value = {"/", "/hello", "/welcome"}, method = RequestMethod.GET)
     public String welcome(Map<String, Object> model) {
         return "welcome";
     }
 
-    @RequestMapping("/login")
-    public String login(Map<String, Object> model) {
-        return "login";
+    @GetMapping("/login")
+    public String login(Map<String, Object> model, HttpSession session) {
+        if (userService.findID((Long) session.getAttribute("id")))
+            return "dashboard";
+        else return "login";
     }
 
-    @ResponseBody
-    @PostMapping("/login/validate")
-    public boolean validateLogin(@RequestParam("username") String username,
+    @PostMapping("/login")
+    public String validateLogin(@RequestParam("username") String username,
                                 @RequestParam("password") String password,
                                 Map<String, Object> model, HttpSession session) {
-        boolean validUser = userService.validateUser(username, password);
-        if (validUser) {
-            session.setAttribute("id", userService.getUserID(username, password));
+        if (userService.validateUser(username, password)) {
+            session.setAttribute("id", userService.getID(username, password));
+            return "dashboard";
         } else {
             model.put("msg", "Incorrect Credential!");
+            return "login";
         }
-        return validUser;
     }
 
     @RequestMapping("/register")
@@ -51,7 +52,7 @@ public class UserController {
                                         Map<String, Object> model, HttpSession session) {
         boolean validRegistration = userService.register(username, password);
         if (validRegistration) {
-            session.setAttribute("id", userService.getUserID(username, password));
+            session.setAttribute("id", userService.getID(username, password));
         } else {
             model.put("msg", "Registration Failed! Duplicate Usernames!");
         }

@@ -15,8 +15,12 @@ public class UserService {
         return userMapper.validate(username, password) != 0;
     }
 
-    public Long getUserID(String username, String password) {
+    public Long getID(String username, String password) {
         return userMapper.getID(username, password);
+    }
+
+    public boolean findID(Long id) {
+        return userMapper.findID(id) != 0;
     }
 
     // return true if the user registers successfully

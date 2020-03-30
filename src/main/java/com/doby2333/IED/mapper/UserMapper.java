@@ -14,6 +14,9 @@ public interface UserMapper {
     @Select("SELECT id FROM user WHERE username = #{username} AND password = #{password};")
     Long getID(@Param("username") String username, @Param("password") String password);
 
+    @Select("SELECT COUNT(*) FROM user WHERE id = #{id};")
+    int findID(@Param("id") Long id);
+
     @Insert("INSERT INTO user VALUES (#{username}, #{password});")
     void register(@Param("username") String username, @Param("password") String password);
 
