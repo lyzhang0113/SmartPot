@@ -17,7 +17,7 @@ public interface UserMapper {
     @Select("SELECT COUNT(*) FROM user WHERE id = #{id};")
     int findID(@Param("id") Long id);
 
-    @Insert("INSERT INTO user VALUES (#{username}, #{password});")
+    @Insert("INSERT INTO user VALUES (DEFAULT, #{username}, #{password}, DEFAULT, DEFAULT);")
     void register(@Param("username") String username, @Param("password") String password);
 
     @Select("SELECT COUNT(*) FROM user WHERE username = #{username};")

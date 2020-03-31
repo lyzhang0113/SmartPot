@@ -4,6 +4,8 @@ import com.doby2333.IED.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.validation.constraints.Null;
+
 @Service
 public class UserService {
 
@@ -19,8 +21,9 @@ public class UserService {
         return userMapper.getID(username, password);
     }
 
-    public boolean findID(Long id) {
-        return userMapper.findID(id) != 0;
+    public boolean findID(String id) {
+        if (id == null) return false;
+        return userMapper.findID(Long.parseLong(id)) != 0;
     }
 
     // return true if the user registers successfully
