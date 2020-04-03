@@ -2,13 +2,15 @@ package com.doby2333.IED.dto;
 
 import lombok.Data;
 
-import java.util.Date;
-
 @Data
-public class PlantDto {
+public class SettingDto {
+
     private Long id;
+    private Long uid;
+    private Long pid;
     private Integer light_freq;
     private Integer light_intense;
     private Integer water_freq;
     private Integer water_intense;
+
 }

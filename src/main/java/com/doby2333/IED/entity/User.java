@@ -6,8 +6,8 @@ import java.util.Date;
 
 @Data
 public class User {
-    private Long ID;
-    private String PASSWORD;
-    private String USERNAME;
-    private Date CREATED_TIME;
+    private Long id;
+    private String password;
+    private String username;
+    private Date create_time;
 }

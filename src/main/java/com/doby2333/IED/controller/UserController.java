@@ -22,8 +22,8 @@ public class UserController {
 
     @GetMapping("/login")
     public String login(Map<String, Object> model, HttpSession session) {
-        if (userService.findID((String) session.getAttribute("id")))
-            return "dashboard";
+        if (session.getAttribute("id") == null)
+            return "redirect:/dashboard";
         else return "login";
     }
 
@@ -33,7 +33,8 @@ public class UserController {
                                 Map<String, Object> model, HttpSession session) {
         if (userService.validateUser(username, password)) {
             session.setAttribute("id", userService.getID(username, password).toString());
-            return "dashboard";
+            session.setAttribute("username", username);
+            return "redirect:/dashboard";
         } else {
             model.put("msg", "Incorrect Credential!");
             return "login";
@@ -43,7 +44,9 @@ public class UserController {
     @PostMapping("/logout")
     public String logout(Map<String, Object> model, HttpSession session) {
         session.setAttribute("id", null);
-        return "welcome";
+        session.setAttribute("username", null);
+        model.put("msg", "You have been successfully logged out!");
+        return "redirect:/welcome";
     }
 
     @GetMapping("/register")
@@ -58,7 +61,8 @@ public class UserController {
         boolean validRegistration = userService.register(username, password);
         if (validRegistration) {
             session.setAttribute("id", userService.getID(username, password));
-            return "login";
+            session.setAttribute("username", username);
+            return "redirect:/login";
         } else {
             model.put("msg", "Registration Failed! Duplicate Username!");
             return "register";

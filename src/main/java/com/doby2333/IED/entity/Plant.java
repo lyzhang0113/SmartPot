@@ -6,18 +6,18 @@ import java.util.Date;
 
 @Data
 public class Plant {
-    private Long ID;
-    private String NAME;
-    private String SCI_NAME;
-    private int LIGHT_FREQ;
-    private int LIGHT_INTENSE;
-    private String LIGHT_DETAIL;
-    private int WATER_FREQ;
-    private String WATER_FREQ_DETAIL;
-    private int WATER_INTENSE;
-    private String WATER_INTENSE_DETAIL;
-    private String FERT_GUIDE;
-    private String FERT_DETAIL;
-    private Date CREATE_TIME;
+    private long id;
+    private String name;
+    private String sci_name;
+    private int light_freq;
+    private int light_intense;
+    private String light_detail;
+    private int water_freq;
+    private String water_freq_detail;
+    private int water_intense;
+    private String water_intense_detail;
+    private String fert_guide;
+    private String fert_detail;
+    private Date create_time;
 
 }
