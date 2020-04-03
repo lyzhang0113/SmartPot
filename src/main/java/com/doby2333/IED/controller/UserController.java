@@ -22,7 +22,7 @@ public class UserController {
 
     @GetMapping("/login")
     public String login(Map<String, Object> model, HttpSession session) {
-        if (session.getAttribute("id") == null)
+        if (session.getAttribute("id") != null)
             return "redirect:/dashboard";
         else return "login";
     }

@@ -1,15 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
+<html lang="en">
 <head>
     <meta charset="UTF-8"/>
     <title>Dashboard</title>
 </head>
 <body>
 THIS IS THE DASHBOARD! YOU HAVE SUCCESSFULLY LOGGED IN!
-    <form action="/logout" method="post">
-        <button class="btn btn-lg" type="submit">Logout</button>
-    </form>
+<form action="/logout" method="post">
+    <button class="btn btn-lg" type="submit">Logout</button>
+</form>
 
+<!--form action="#" th:action="@/saveSetting" method="post">
+    <select th:field="" class="form-control">
+        <option th:each="name : "
+    </select>
+</form-->
 
 
 </body>

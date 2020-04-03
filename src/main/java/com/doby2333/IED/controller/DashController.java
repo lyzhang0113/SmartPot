@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
-import java.util.Map;
 
 @Controller
 public class DashController {
@@ -27,17 +25,7 @@ public class DashController {
         }
 
         // addAttribute for selecting plants
-        model.addAttribute("name", dashService.getNames());
-        model.addAttribute("sci_name", dashService.getSciNames());
-        model.addAttribute("light_freq", dashService.getLightFreq());
-        model.addAttribute("light_intense", dashService.getLightIntense());
-        model.addAttribute("light_detail", dashService.getLightDetail());
-        model.addAttribute("water_freq", dashService.getWaterFreq());
-        model.addAttribute("water_freq_detail", dashService.getWaterFreqDetail());
-        model.addAttribute("water_intense", dashService.getWaterIntense());
-        model.addAttribute("water_intense_detail", dashService.getWaterIntenseDetail());
-        model.addAttribute("fert_guide", dashService.getFertGuide());
-        model.addAttribute("fert_detail", dashService.getFertDetail());
+        model.addAttribute("plants", dashService.getPlants());
 
         // addAttribute for displaying history settings
 
