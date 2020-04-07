@@ -7,9 +7,9 @@
     --space-m: var(--space-root);
     --space-l: calc(var(--space-root) * 1.5);
     --space-xl: calc(var(--space-root) * 2);
-    --color-primary: mediumslateblue;
+    --color-primary: green;
     --color-secondary: black;
-    --color-tertiary: Aquamarine;
+    --color-tertiary: linear-gradient(120deg, BurlyWood 0%, Chocolate 100%) !important;
     --base-border-radius: 0.25rem;
     --ease: cubic-bezier(0.075, 0.82, 0.165, 1);
     --duration: 350ms;
@@ -30,7 +30,7 @@ body {
     font-size: var(--font-size);
     font-family: var(--font-family);
     line-height: 1.2;
-    background-color: var(--color-tertiary);
+    background-image: var(--color-tertiary);
 }
 
 a {
