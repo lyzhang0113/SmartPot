@@ -24,6 +24,9 @@ public class DashController {
             return "redirect:/login";
         }
 
+        // addAttribute for user info
+        model.addAttribute("username", session.getAttribute("username"));
+
         // addAttribute for selecting plants
         model.addAttribute("plants", dashService.getPlants());
 

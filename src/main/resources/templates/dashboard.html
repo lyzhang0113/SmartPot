@@ -96,7 +96,7 @@
                                 <div class="btn-group">
                                     <a aria-expanded="false" aria-haspopup="true" class="p-0 btn"
                                        data-toggle="dropdown">
-                                        <img alt="" class="rounded-circle" th:src="@{/assets/images/avatars/1.jpg}"
+                                        <img alt="" class="rounded-circle" th:text="${username}"
                                              width="42">
                                         <i class="fa fa-angle-down ml-2 opacity-8"></i>
                                     </a>
@@ -115,10 +115,11 @@
                             </div>
                             <div class="widget-content-left  ml-3 header-user-info">
                                 <div class="widget-heading">
-                                    Alina Mclourd
+                                    <!-- could display number of pots here -->
+                                    <hl th:text="${username}">username</hl>
                                 </div>
                                 <div class="widget-subheading">
-                                    VP People Manager
+                                    Admin
                                 </div>
                             </div>
                             <div class="widget-content-right header-user-info ml-3">
@@ -895,7 +896,7 @@
                                                             <div class="widget-content-wrapper">
                                                                 <div class="widget-content-left mr-3">
                                                                     <img alt="" class="rounded-circle"
-                                                                         th:src="@{assets/images/avatars/9.jpg}"
+                                                                         th:src="@{img/avatars/9.jpg}"
                                                                          width="42">
                                                                 </div>
                                                                 <div class="widget-content-left">
@@ -919,7 +920,7 @@
                                                             <div class="widget-content-wrapper">
                                                                 <div class="widget-content-left mr-3">
                                                                     <img alt="" class="rounded-circle"
-                                                                         th:src="@{assets/images/avatars/5.jpg}"
+                                                                         th:src="@{img/avatars/5.jpg}"
                                                                          width="42">
                                                                 </div>
                                                                 <div class="widget-content-left">
@@ -943,7 +944,7 @@
                                                             <div class="widget-content-wrapper">
                                                                 <div class="widget-content-left mr-3">
                                                                     <img alt="" class="rounded-circle"
-                                                                         th:src="@{assets/images/avatars/4.jpg}"
+                                                                         th:src="@{img/avatars/4.jpg}"
                                                                          width="42">
                                                                 </div>
                                                                 <div class="widget-content-left">
@@ -967,7 +968,7 @@
                                                             <div class="widget-content-wrapper">
                                                                 <div class="widget-content-left mr-3">
                                                                     <img alt="" class="rounded-circle"
-                                                                         th:src="@{assets/images/avatars/3.jpg}"
+                                                                         th:src="@{img/avatars/3.jpg}"
                                                                          width="42">
                                                                 </div>
                                                                 <div class="widget-content-left">
@@ -991,7 +992,7 @@
                                                             <div class="widget-content-wrapper">
                                                                 <div class="widget-content-left mr-3">
                                                                     <img alt="" class="rounded-circle"
-                                                                         th:src="@{assets/images/avatars/2.jpg}"
+                                                                         th:src="@{img/avatars/2.jpg}"
                                                                          width="42">
                                                                 </div>
                                                                 <div class="widget-content-left">
@@ -1246,7 +1247,7 @@
                                                     <div class="widget-content-left mr-3">
                                                         <div class="widget-content-left">
                                                             <img alt="" class="rounded-circle"
-                                                                 th:src="@{assets/images/avatars/4.jpg}" width="40">
+                                                                 th:src="@{img/avatars/4.jpg}" width="40">
                                                         </div>
                                                     </div>
                                                     <div class="widget-content-left flex2">
@@ -1274,7 +1275,7 @@
                                                     <div class="widget-content-left mr-3">
                                                         <div class="widget-content-left">
                                                             <img alt="" class="rounded-circle"
-                                                                 th:src="@{assets/images/avatars/3.jpg}" width="40">
+                                                                 th:src="@{img/avatars/3.jpg}" width="40">
                                                         </div>
                                                     </div>
                                                     <div class="widget-content-left flex2">
@@ -1304,7 +1305,7 @@
                                                     <div class="widget-content-left mr-3">
                                                         <div class="widget-content-left">
                                                             <img alt="" class="rounded-circle"
-                                                                 th:src="@{assets/images/avatars/2.jpg}" width="40">
+                                                                 th:src="@{img/avatars/2.jpg}" width="40">
                                                         </div>
                                                     </div>
                                                     <div class="widget-content-left flex2">
@@ -1333,7 +1334,7 @@
                                                     <div class="widget-content-left mr-3">
                                                         <div class="widget-content-left">
                                                             <img alt="" class="rounded-circle"
-                                                                 th:src="@{assets/images/avatars/1.jpg}" width="40">
+                                                                 th:src="@{img/avatars/1.jpg}" width="40">
                                                         </div>
                                                     </div>
                                                     <div class="widget-content-left flex2">
