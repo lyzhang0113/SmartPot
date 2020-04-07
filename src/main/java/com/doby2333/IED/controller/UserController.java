@@ -17,7 +17,7 @@ public class UserController {
 
     @RequestMapping(value = {"/", "/hello", "/welcome"}, method = RequestMethod.GET)
     public String welcome(Map<String, Object> model) {
-        return "welcome";
+        return "index";
     }
 
     @GetMapping("/login")
@@ -46,7 +46,7 @@ public class UserController {
         session.setAttribute("id", null);
         session.setAttribute("username", null);
         model.put("msg", "You have been successfully logged out!");
-        return "redirect:/welcome";
+        return "redirect:/";
     }
 
     @GetMapping("/register")

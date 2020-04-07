@@ -9,14 +9,14 @@
   <link rel="stylesheet" th:href="@{vendors/owl-carousel/css/owl.theme.default.css}">
   <link rel="stylesheet" th:href="@{vendors/mdi/css/materialdesignicons.min.css}">
   <link rel="stylesheet" th:href="@{vendors/aos/css/aos.css}">
-  <link rel="stylesheet" th:href="@{/css/welcome.min.css}">
+  <link rel="stylesheet" th:href="@{css/style.min.css}">
 </head>
 <body id="body" data-spy="scroll" data-target=".navbar" data-offset="100">
   <header id="header-section">
     <nav class="navbar navbar-expand-lg pl-3 pl-sm-0" id="navbar">
     <div class="container">
       <div class="navbar-brand-wrapper d-flex w-100">
-        <img th:src="@{img/Group2.svg}" alt="">
+        <img alt="" th:src="@{img/logo-compact-sm.png}">
         <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="mdi mdi-menu navbar-toggler-icon"></span>
         </button> 
@@ -25,7 +25,7 @@
         <ul class="navbar-nav align-items-lg-center align-items-start ml-auto">
           <li class="d-flex align-items-center justify-content-between pl-4 pl-lg-0">
             <div class="navbar-collapse-logo">
-              <img th:src="@{img/Group2.svg}" alt="">
+              <img alt="" th:src="@{img/logo-compact-sm.png}">
             </div>
             <button class="navbar-toggler close-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="mdi mdi-close navbar-toggler-icon pl-5"></span>
@@ -38,13 +38,14 @@
             <a class="nav-link" href="#features-section">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#digital-marketing-section">Blog</a>  
+            <a class="nav-link" href="#digital-marketing-section">Design</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#feedback-section">Testimonials</a>
+            <a class="nav-link" href="#feedback-section">Team</a>
           </li>
           <li class="nav-item btn-contact-us pl-4 pl-lg-0">
-            <button class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Contact Us</button>
+            <!--button class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Login/Register</button-->
+            <button class="btn btn-info" onclick="window.location.href = '/login';">Login/Register</button>
           </li>
         </ul>
       </div>
@@ -53,12 +54,14 @@
   </header>
   <div class="banner" >
     <div class="container">
-      <h1 class="font-weight-semibold">Search engine optimisation &<br>Marketing.</h1>
-      <h6 class="font-weight-normal text-muted pb-3">Simple is a simple template with a creative design that solves all your marketing and SEO queries.</h6>
+      <h1 class="font-weight-semibold">SmartPot</h1>
+      <h6 class="font-weight-normal text-muted pb-3">Many people worldwide have difficulties taking care of plants.<br>We
+        want to change that.</h6>
       <div>
         <button class="btn btn-opacity-light mr-1">Get started</button>
         <button class="btn btn-opacity-success ml-1">Learn more</button>
       </div>
+      <!-- smart pot image-->
       <img th:src="@{img/Group171.svg}" alt="" class="img-fluid">
     </div>
   </div>
@@ -197,7 +200,7 @@
               <div class="card-body p-0">
                 <div class="bg-success text-center card-contents">
                   <div class="card-image">
-                      <img th:src="@{img/Group115.svg}" class="case-studies-card-img" alt="">
+                    <img alt="" class="case-studies-card-img" th:src="@{images/Group115.svg}">
                   </div>  
                   <div class="card-desc-box d-flex align-items-center justify-content-around">
                     <div>
@@ -338,10 +341,12 @@
       <section class="contact-details" id="contact-details-section">
         <div class="row text-center text-md-left">
           <div class="col-12 col-md-6 col-lg-3 grid-margin">
-            <img th:src="@{img/Group2.svg}" alt="" class="pb-2">
+            <img alt="" class="pt-2" th:src="@{img/logo-full.png}" width="85%">
             <div class="pt-2">
+
               <p class="text-muted m-0">mikayla_beer@feil.name</p>
               <p class="text-muted m-0">906-179-8309</p>
+
             </div>         
           </div>
           <div class="col-12 col-md-6 col-lg-3 grid-margin">
@@ -363,7 +368,7 @@
           </div>
           <div class="col-12 col-md-6 col-lg-3 grid-margin">
               <h5 class="pb-2">Our address</h5>
-              <p class="text-muted">518 Schmeler Neck<br>Bartlett. Illinois</p>
+            <p class="text-muted">Troy, NY 12180</p>
               <div class="d-flex justify-content-center justify-content-md-start">
                 <a href="#"><span class="mdi mdi-facebook"></span></a>
                 <a href="#"><span class="mdi mdi-twitter"></span></a>
@@ -374,7 +379,8 @@
         </div>  
       </section>
       <footer class="border-top">
-        <p class="text-center text-muted pt-4">Copyright © 2019<a href="https://www.bootstrapdash.com/" class="px-1">Bootstrapdash.</a>All rights reserved.</p>
+        <p class="text-center text-muted pt-4">Copyright © 2020<a class="px-1" href="https://pot.doby2333.com/">SmartPot
+          Team</a>All rights reserved.</p>
       </footer>
       <!-- Modal for Contact - us Button -->
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -412,6 +418,6 @@
   <script th:src="@{vendors/bootstrap/bootstrap.min.js}"></script>
   <script th:src="@{vendors/owl-carousel/js/owl.carousel.min.js}"></script>
   <script th:src="@{vendors/aos/js/aos.js}"></script>
-  <script th:src="@{js/welcome.js}"></script>
+  <script th:src="@{js/landingpage.js}"></script>
 </body>
 </html>
