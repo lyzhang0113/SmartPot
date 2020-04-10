@@ -20,7 +20,7 @@
 
 <form class="form-signin" method="post" th:action="@{/login}">
     <div class="form-inner">
-        <h2>Please Sign In</h2>
+        <h2>Please Login</h2>
         <p style="color: red" th:if="${not #strings.isEmpty(msg)}" th:text="${msg}"></p>
         <div class="input-wrapper">
             <label class="sr-only" for="inputUsername">Username</label>
@@ -43,7 +43,7 @@
             </div>
         </div>
         <div class="btn-group">
-            <button class="btn btn--primary">Sign in</button>
+            <button class="btn btn--primary">Login</button>
             <button class="btn btn--primary" onclick="window.location.href = '/register';">Register</button>
         </div>
     </div>

@@ -16,7 +16,10 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value = {"/", "/hello", "/welcome"}, method = RequestMethod.GET)
-    public String welcome(Map<String, Object> model) {
+    public String welcome(Map<String, Object> model, HttpSession session) {
+        if (session.getAttribute("id") != null)
+            model.put("msg", "Dashboard");
+        else model.put("msg", "Login/Register");
         return "index";
     }
 
