@@ -31,8 +31,14 @@ public class DashController {
         model.addAttribute("plants", dashService.getPlants());
 
         // addAttribute for displaying history settings
-
-
+        // TODO: Dropdown list to select potID
+        /*
+            Write Post Method to let user select PotId, re-render page with potId
+         */
+        model.addAttribute("light_freq_map", dashService.getRecentSetting(Long.parseLong((String) session.getAttribute("id")), Long.parseLong("1"), "light_freq"));
+        model.addAttribute("light_intense_map", dashService.getRecentSetting(Long.parseLong((String) session.getAttribute("id")), Long.parseLong("1"), "light_intense"));
+        model.addAttribute("water_freq_map", dashService.getRecentSetting(Long.parseLong((String) session.getAttribute("id")), Long.parseLong("1"), "water_freq"));
+        model.addAttribute("water_intense_map", dashService.getRecentSetting(Long.parseLong((String) session.getAttribute("id")), Long.parseLong("1"), "water_intense"));
         return "dashboard";
     }
 

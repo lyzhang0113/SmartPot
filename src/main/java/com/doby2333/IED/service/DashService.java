@@ -1,12 +1,13 @@
 package com.doby2333.IED.service;
 
+import com.doby2333.IED.dto.SettingDto;
 import com.doby2333.IED.entity.Plant;
 import com.doby2333.IED.mapper.PlantMapper;
 import com.doby2333.IED.mapper.SettingMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.*;
 
 @Service
 public class DashService {
@@ -47,4 +48,26 @@ public class DashService {
         settingMapper.saveSetting(uid, pid, lightFreq, lightIntense, waterFreq, waterIntense);
     }
 
+    public Map<Date, Integer> getRecentSetting(Long uid, Long pid, String setting) {
+        Map<Date, Integer> result = new LinkedHashMap<>();
+        List<SettingDto> settings = new LinkedList<>();
+        switch (setting) {
+            case "light_freq":
+                settings = settingMapper.find5LightFreq(uid, pid);
+                break;
+            case "light_intense":
+                settings = settingMapper.find5LightIntense(uid, pid);
+                break;
+            case "water_freq":
+                settings = settingMapper.find5WaterFreq(uid, pid);
+                break;
+            case "water_intense":
+                settings = settingMapper.find5WaterIntense(uid, pid);
+                break;
+        }
+        for (SettingDto s : settings) {
+            result.put(s.getTime(), s.getValue());
+        }
+        return result;
+    }
 }
