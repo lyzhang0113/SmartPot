@@ -15,7 +15,7 @@ public interface SettingMapper {
     @Select("SELECT COUNT(*) FROM setting WHERE pid = #{pid}")
     int validatePID(@Param("pid") Long pid);
 
-    @Insert("INSERT INTO setting VALUES (DEFAULT, #{uid}, #{pid}, #{plant_id}, #{lf}, #{li}, #{wf}, #{wi}, DEFAULT")
+    @Insert("INSERT INTO setting VALUES (DEFAULT, #{uid}, #{pid}, #{plant_id}, #{lf}, #{li}, #{wf}, #{wi}, DEFAULT)")
     Boolean saveSetting(@Param("uid") Long uid, @Param("pid") Long pid, @Param("plant_id") Long plant_id, @Param("lf") int lf, @Param("li") int li, @Param("wf") int wf, @Param("wi") int wi);
 
     @Select("SELECT * FROM setting WHERE uid = #{uid}")

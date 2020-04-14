@@ -67,6 +67,7 @@ public class DashController {
         model.addAttribute("pots", dashService.getPots(uid));
         model.addAttribute("pot_count", dashService.countPots(uid));
         model.addAttribute("plant_name", dashService.getPlantNameByPID(pid));
+        model.addAttribute("plants", dashService.getPlants());
         return "pot_setting";
     }
 
@@ -93,21 +94,25 @@ public class DashController {
     }
 
     @PostMapping("/saveSetting")
-    public void saveSetting(@RequestParam("pid") Long pid,
-                            @RequestParam("plant_id") Long plant_id,
-                            @RequestParam(value = "light_freq", required = false) Integer lightFreq,
-                            @RequestParam(value = "light_intense", required = false) Integer lightIntense,
-                            @RequestParam(value = "water_freq", required = false) Integer waterFreq,
-                            @RequestParam(value = "water_intense", required = false) Integer waterIntense,
-                            Model model, HttpSession session) {
+    public String saveSetting(@RequestParam("pid") Long pid,
+                              @RequestParam("plant_id") Long plant_id,
+                              @RequestParam(value = "light_freq", required = false) Integer lightFreq,
+                              @RequestParam(value = "light_intense", required = false) Integer lightIntense,
+                              @RequestParam(value = "water_freq", required = false) Integer waterFreq,
+                              @RequestParam(value = "water_intense", required = false) Integer waterIntense,
+                              Model model, HttpSession session) {
         if (session.getAttribute("id") == null) {
             model.addAttribute("msg", "Please Login to Save Settings!");
-        } else {
-            if (lightFreq != null)
-                dashService.saveSetting((Long) session.getAttribute("id"), pid, plant_id, lightFreq, lightIntense, waterFreq, waterIntense);
-            else
-                dashService.saveSetting((Long) session.getAttribute("id"), pid, plant_id);
+            return "redirect:/login";
         }
+        Long uid = Long.parseLong((String) session.getAttribute("id"));
+        if (lightFreq != null) {
+            // TODO: Validate inputs, could be done in HTML
+            dashService.saveSetting(uid, pid, plant_id, lightFreq, lightIntense, waterFreq, waterIntense);
+        } else
+            dashService.saveSetting(uid, pid, plant_id);
+        model.addAttribute("msg", "Settings Saved Successfully!");
+        return "redirect:/dashboard/setting?pid=" + pid;
     }
 
 }

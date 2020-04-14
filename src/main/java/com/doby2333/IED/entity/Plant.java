@@ -19,5 +19,4 @@ public class Plant {
     private String fert_guide;
     private String fert_detail;
     private Date create_time;
-
 }
