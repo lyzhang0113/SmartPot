@@ -65,14 +65,15 @@
         </div>
         <div class="app-header__content">
             <div class="app-header-left">
-                <div class="search-wrapper">
+                <span style="font-size: 200%; vertical-align: middle;">Welcome to the Dashboard, [[${username}]]!</span>
+                <!--div class="search-wrapper">
                     <div class="input-holder">
                         <input class="search-input" placeholder="Type to search" type="text">
                         <button class="search-icon"><span></span></button>
                     </div>
                     <button class="close"></button>
-                </div>
-                <ul class="header-menu nav">
+                </div-->
+                <!--ul class="header-menu nav">
                     <li class="nav-item">
                         <a class="nav-link" href="javascript:void(0);">
                             <i class="nav-link-icon fa fa-database"> </i>
@@ -91,13 +92,13 @@
                             Settings
                         </a>
                     </li>
-                </ul>
+                </ul-->
             </div>
             <div class="app-header-right">
                 <div class="header-btn-lg pr-0">
                     <div class="widget-content p-0">
                         <div class="widget-content-wrapper">
-                            <div class="widget-content-left">
+                            <!--div class="widget-content-left">
                                 <div class="btn-group">
                                     <a aria-expanded="false" aria-haspopup="true" class="p-0 btn"
                                        data-toggle="dropdown">
@@ -117,20 +118,20 @@
                                         </form>
                                     </div>
                                 </div>
-                            </div>
+                            </div-->
                             <div class="widget-content-left  ml-3 header-user-info">
                                 <div class="widget-heading">
-                                    <!-- could display number of pots here -->
-                                    <hl th:text="${username}">username</hl>
+                                    <div>Pots Registered: [[${pot_count}]]</div>
                                 </div>
                                 <div class="widget-subheading">
-                                    Admin
+                                    <!-- TODO: Redirect to register pots-->
+                                    Register More!
                                 </div>
                             </div>
                             <div class="widget-content-right header-user-info ml-3">
-                                <button class="btn-shadow p-1 btn btn-primary btn-sm show-toastr-example" type="button">
-                                    <i class="fa text-white fa-calendar pr-1 pl-1"></i>
-                                </button>
+                                <form action="/logout" method="post">
+                                    <button class="btn-shadow p-1 btn btn-focus btn-sm" type="submit">Logout</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -138,6 +139,7 @@
             </div>
         </div>
     </div>
+    <!-- bottom-right UI-Theme-Setting Button START -->
     <div class="ui-theme-settings">
         <button class="btn-open-options btn btn-warning" id="TooltipDemo" type="button">
             <i class="fa fa-cog fa-w-16 fa-spin fa-2x"></i>
@@ -500,6 +502,7 @@
             </div>
         </div>
     </div>
+    <!-- bottom-right UI-Theme-Setting Button  END  -->
     <div class="app-main">
         <div class="app-sidebar sidebar-shadow bg-sunny-morning sidebar-text-dark">
             <div class="app-header__logo">
@@ -539,7 +542,7 @@
                     <ul class="vertical-nav-menu">
                         <li class="app-sidebar__heading">Dashboards</li>
                         <li>
-                            <a class="mm-active" href="dashboard.html">
+                            <a class="mm-active" href="dashboard">
                                 <i class="metismenu-icon pe-7s-rocket"></i>
                                 Dashboard
                             </a>
@@ -741,69 +744,49 @@
             </div>
         </div>
         <div class="app-main__outer">
+            <!-- Dropdown Select PID -->
             <div class="app-main__inner">
                 <div class="app-page-title">
                     <div class="page-title-wrapper">
                         <div class="page-title-heading">
                             <div class="page-title-icon">
-                                <i class="pe-7s-car icon-gradient bg-mean-fruit">
+                                <i class="pe-7s-monitor icon-gradient bg-mean-fruit">
                                 </i>
                             </div>
-                            <div>Analytics Dashboard
-                                <div class="page-title-subheading">This is an example dashboard created using build-in
-                                    elements and components.
-                                </div>
+                            <div>Showing result for Pot [[${pid}]]!
+                                <div class="page-title-subheading">Please select the Pot you want to view.</div>
                             </div>
                         </div>
                         <div class="page-title-actions">
-                            <button class="btn-shadow mr-3 btn btn-dark" data-placement="bottom" data-toggle="tooltip"
+                            <!--button class="btn-shadow mr-3 btn btn-dark" data-placement="bottom" data-toggle="tooltip"
                                     title="Example Tooltip" type="button">
                                 <i class="fa fa-star"></i>
-                            </button>
+                            </button-->
                             <div class="d-inline-block dropdown">
                                 <button aria-expanded="false" aria-haspopup="true"
-                                        class="btn-shadow dropdown-toggle btn btn-info" data-toggle="dropdown"
+                                        class="btn-shadow dropdown-toggle btn-lg btn-info" data-toggle="dropdown"
                                         type="button">
                                             <span class="btn-icon-wrapper pr-2 opacity-7">
-                                                <i class="fa fa-business-time fa-w-20"></i>
+                                                <i class="pe-7s-server"></i>
                                             </span>
-                                    Buttons
+                                    Pots
                                 </button>
                                 <div aria-hidden="true" class="dropdown-menu dropdown-menu-right" role="menu"
                                      tabindex="-1">
                                     <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="javascript:void(0);">
+                                        <li class="nav-item" th:if="${pots.getPots().empty}">
+                                            <a class="nav-link" href="javascript:void(0);"
+                                               th:href="@{/dashboard/register}">
                                                 <i class="nav-link-icon lnr-inbox"></i>
-                                                <span>
-                                                            Inbox
-                                                        </span>
-                                                <div class="ml-auto badge badge-pill badge-secondary">86</div>
+                                                <span style="text-align: center">No Pots Available,<br>
+                                                    Click to Register!</span>
                                             </a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="javascript:void(0);">
+                                        <li class="nav-item" th:each="pot : ${pots.getPots()}">
+                                            <a class="nav-link" href="javascript:void(0);"
+                                               th:href="@{/dashboard(pid=${pot.pid})}">
                                                 <i class="nav-link-icon lnr-book"></i>
-                                                <span>
-                                                            Book
-                                                        </span>
-                                                <div class="ml-auto badge badge-pill badge-danger">5</div>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="javascript:void(0);">
-                                                <i class="nav-link-icon lnr-picture"></i>
-                                                <span>
-                                                            Picture
-                                                        </span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link disabled" disabled href="javascript:void(0);">
-                                                <i class="nav-link-icon lnr-file-empty"></i>
-                                                <span>
-                                                            File Disabled
-                                                        </span>
+                                                <span th:text="${pot.pid} + ' : ' + ${pot.plant}" th:value="${pot.pid}">Pots</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -812,61 +795,38 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- LIGHTING FREQUENCY AND LIGHTING INTENSITY CHART START -->
                 <div class="row">
-                    <div class="col-md-6 col-xl-4">
-                        <div class="card mb-3 widget-content bg-midnight-bloom">
+                    <div class="col-md-12 col-lg-6">
+                        <div class="card mb-3 widget-content bg-happy-green">
                             <div class="widget-content-wrapper text-white">
                                 <div class="widget-content-left">
-                                    <div class="widget-heading">Total Orders</div>
-                                    <div class="widget-subheading">Last year expenses</div>
+                                    <div class="widget-heading">Lighting Frequency</div>
+                                    <div class="widget-subheading" th:text="${setting_date}">Time</div>
                                 </div>
                                 <div class="widget-content-right">
-                                    <div class="widget-numbers text-white"><span>1896</span></div>
+                                    <div class="widget-numbers text-white" th:text="${light_freq}"><span>Value</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-xl-4">
-                        <div class="card mb-3 widget-content bg-arielle-smile">
+                    <div class="col-md-12 col-lg-6">
+                        <div class="card mb-3 widget-content bg-happy-green">
                             <div class="widget-content-wrapper text-white">
                                 <div class="widget-content-left">
-                                    <div class="widget-heading">Clients</div>
-                                    <div class="widget-subheading">Total Clients Profit</div>
+                                    <div class="widget-heading">Lighting Intensity</div>
+                                    <div class="widget-subheading" th:text="${setting_date}">Time</div>
                                 </div>
                                 <div class="widget-content-right">
-                                    <div class="widget-numbers text-white"><span>$ 568</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-xl-4">
-                        <div class="card mb-3 widget-content bg-grow-early">
-                            <div class="widget-content-wrapper text-white">
-                                <div class="widget-content-left">
-                                    <div class="widget-heading">Followers</div>
-                                    <div class="widget-subheading">People Interested</div>
-                                </div>
-                                <div class="widget-content-right">
-                                    <div class="widget-numbers text-white"><span>46%</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-xl-none d-lg-block col-md-6 col-xl-4">
-                        <div class="card mb-3 widget-content bg-premium-dark">
-                            <div class="widget-content-wrapper text-white">
-                                <div class="widget-content-left">
-                                    <div class="widget-heading">Products Sold</div>
-                                    <div class="widget-subheading">Revenue streams</div>
-                                </div>
-                                <div class="widget-content-right">
-                                    <div class="widget-numbers text-warning"><span>$14M</span></div>
+                                    <div class="widget-numbers text-white" th:text="${light_intense}"><span>Value</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- LIGHTING FREQUENCY AND LIGHTING INTENSITY CHART -->
                 <div class="row">
                     <div class="col-md-12 col-lg-6">
                         <div class="mb-3 card">
@@ -1294,7 +1254,50 @@
                     </div>
                 </div>
                 <!-- LIGHTING FREQUENCY AND LIGHTING INTENSITY CHART END -->
-                <!-- WATER FREQUENCY AND WATER INTENSITY CHART -->
+                <!-- WATER FREQUENCY AND WATER INTENSITY CHART START -->
+                <div class="row">
+                    <div class="col-md-12 col-lg-6">
+                        <div class="card mb-3 widget-content bg-arielle-smile">
+                            <div class="widget-content-wrapper text-white">
+                                <div class="widget-content-left">
+                                    <div class="widget-heading">Watering Frequency</div>
+                                    <div class="widget-subheading" th:text="${setting_date}">Time</div>
+                                </div>
+                                <div class="widget-content-right">
+                                    <div class="widget-numbers text-white" th:text="${water_freq}"><span>Value</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-6">
+                        <div class="card mb-3 widget-content bg-arielle-smile">
+                            <div class="widget-content-wrapper text-white">
+                                <div class="widget-content-left">
+                                    <div class="widget-heading">Watering Intensity</div>
+                                    <div class="widget-subheading" th:text="${setting_date}">Time</div>
+                                </div>
+                                <div class="widget-content-right">
+                                    <div class="widget-numbers text-white" th:text="${water_intense}"><span>Value</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--div class="d-xl-none d-lg-block col-md-6 col-xl-4">
+                        <div class="card mb-3 widget-content bg-premium-dark">
+                            <div class="widget-content-wrapper text-white">
+                                <div class="widget-content-left">
+                                    <div class="widget-heading">Products Sold</div>
+                                    <div class="widget-subheading">Revenue streams</div>
+                                </div>
+                                <div class="widget-content-right">
+                                    <div class="widget-numbers text-warning"><span>$14M</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div-->
+                </div>
                 <div class="row">
                     <div class="col-md-12 col-lg-6">
                         <div class="mb-3 card">
@@ -1723,6 +1726,7 @@
                     </div>
                 </div>
                 <!-- WATER FREQUENCY AND WATER INTENSITY CHART END -->
+                <!--
                 <div class="row">
                     <div class="col-md-6 col-xl-4">
                         <div class="card mb-3 widget-content">
@@ -2038,6 +2042,7 @@
                         </div>
                     </div>
                 </div>
+                -->
             </div>
             <div class="app-wrapper-footer">
                 <div class="app-footer">

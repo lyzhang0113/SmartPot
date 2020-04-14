@@ -1,5 +1,6 @@
 package com.doby2333.IED.service;
 
+import com.doby2333.IED.dto.PotDto;
 import com.doby2333.IED.dto.SettingDto;
 import com.doby2333.IED.entity.Plant;
 import com.doby2333.IED.mapper.PlantMapper;
@@ -44,8 +45,17 @@ public class DashService {
 //
 //    public Map<Long, String> getFertDetail() {return plantMapper.getFertDetail();}
 
-    public void saveSetting(Long uid, Long pid, Integer lightFreq, Integer lightIntense, Integer waterFreq, Integer waterIntense) {
-        settingMapper.saveSetting(uid, pid, lightFreq, lightIntense, waterFreq, waterIntense);
+    public int countPots(Long uid) {
+        return settingMapper.countPots(uid);
+    }
+
+    public PotDto getPots(Long uid) {
+        PotDto potDto = new PotDto(settingMapper.getPots(uid));
+        return potDto;
+    }
+
+    public Boolean saveSetting(Long uid, Long pid, Integer lightFreq, Integer lightIntense, Integer waterFreq, Integer waterIntense) {
+        return settingMapper.saveSetting(uid, pid, lightFreq, lightIntense, waterFreq, waterIntense);
     }
 
     public Map<Date, Integer> getRecentSetting(Long uid, Long pid, String setting) {
@@ -69,5 +79,9 @@ public class DashService {
             result.put(s.getTime(), s.getValue());
         }
         return result;
+    }
+
+    public Date getRecentSettingDate(Long uid, Long pid) {
+        return settingMapper.findRecentSettingDate(uid, pid);
     }
 }
