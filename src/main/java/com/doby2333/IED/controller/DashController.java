@@ -49,19 +49,24 @@ public class DashController {
         // addAttribute to show the number of pots, and their id and plant_names
         model.addAttribute("pot_count", dashService.countPots(uid));
         model.addAttribute("pots", dashService.getPots(uid));
-        model.addAttribute("plant_name", dashService.getPlantName(pid));
+        model.addAttribute("plant_name", dashService.getPlantNameByPID(pid));
         return "dashboard";
     }
 
     @GetMapping("/dashboard/setting")
-    public String setting(Model model, HttpSession session) {
+    public String setting(Model model, HttpSession session, @RequestParam(value = "pid", defaultValue = "") String p) {
         // if not logged in, kick user out
         if (session.getAttribute("id") == null) {
             model.addAttribute("msg", "Please Login First Before Accessing This Content!");
             return "redirect:/login";
         }
         Long uid = Long.parseLong((String) session.getAttribute("id"));
+        Long pid = p.isEmpty() ? dashService.getUserPot(uid) : Long.parseLong(p);
+        model.addAttribute("username", session.getAttribute("username"));
+        model.addAttribute("pid", pid);
+        model.addAttribute("pots", dashService.getPots(uid));
         model.addAttribute("pot_count", dashService.countPots(uid));
+        model.addAttribute("plant_name", dashService.getPlantNameByPID(pid));
         return "pot_setting";
     }
 
