@@ -49,8 +49,8 @@ public class DashService {
         return settingMapper.countPots(uid);
     }
 
-    public String getPlantName(Long pid) {
-        return settingMapper.getPlantName(pid);
+    public String getPlantNameByPID(Long pid) {
+        return settingMapper.getPlantNameByPID(pid);
     }
 
     public Long getUserPot(Long uid) {
@@ -98,8 +98,8 @@ public class DashService {
                 settings = settingMapper.find5WaterIntense(uid, pid);
                 break;
         }
-        for (SettingDto s : settings) {
-            result.put(s.getTime(), s.getValue());
+        for (int i = settings.size() - 1; i >= 0; i--) {
+            result.put(settings.get(i).getTime(), settings.get(i).getValue());
         }
         return result;
     }

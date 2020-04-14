@@ -58,7 +58,7 @@ public interface SettingMapper {
             "  ) c,\n" +
             "  plant d\n" +
             "WHERE c.plant_id = d.id")
-    String getPlantName(@Param("pid") Long pid);
+    String getPlantNameByPID(@Param("pid") Long pid);
 
     @Select("SELECT pid FROM setting WHERE uid = #{uid} LIMIT 1")
     Long getUserPot(@Param("uid") Long uid);
