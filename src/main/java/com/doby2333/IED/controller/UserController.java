@@ -3,6 +3,7 @@ package com.doby2333.IED.controller;
 import com.doby2333.IED.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -70,5 +71,15 @@ public class UserController {
             model.put("msg", "Registration Failed! Duplicate Username!");
             return "register";
         }
+    }
+
+    @GetMapping("/account/setting")
+    public String setting(Model model, HttpSession session) {
+        // if not logged in, kick user out
+        if (session.getAttribute("id") == null) {
+            model.addAttribute("msg", "Please Login First Before Accessing This Content!");
+            return "redirect:/login";
+        }
+        return "account_setting";
     }
 }

@@ -49,13 +49,36 @@ public class DashService {
         return settingMapper.countPots(uid);
     }
 
+    public String getPlantName(Long pid) {
+        return settingMapper.getPlantName(pid);
+    }
+
+    public Long getUserPot(Long uid) {
+        Long r = settingMapper.getUserPot(uid);
+        return r == null ? Long.valueOf(-1) : r;
+    }
+
     public PotDto getPots(Long uid) {
         PotDto potDto = new PotDto(settingMapper.getPots(uid));
         return potDto;
     }
 
-    public Boolean saveSetting(Long uid, Long pid, Integer lightFreq, Integer lightIntense, Integer waterFreq, Integer waterIntense) {
-        return settingMapper.saveSetting(uid, pid, lightFreq, lightIntense, waterFreq, waterIntense);
+    public boolean registerPot(Long uid, Long pid) {
+        if (settingMapper.validatePID(pid) != 0) return false;
+        settingMapper.saveSetting(uid, pid, Long.valueOf(0), 0, 0, 0, 0);
+        return true;
+    }
+
+    public Boolean saveSetting(Long uid, Long pid, Long plant_id, Integer lightFreq, Integer lightIntense, Integer waterFreq, Integer waterIntense) {
+        return settingMapper.saveSetting(uid, pid, plant_id, lightFreq, lightIntense, waterFreq, waterIntense);
+    }
+
+    public Boolean saveSetting(Long uid, Long pid, Long plant_id) {
+        int lightFreq = plantMapper.getLightFreqByID(plant_id);
+        int lightIntense = plantMapper.getLightIntenseByID(plant_id);
+        int waterFreq = plantMapper.getWaterFreqByID(plant_id);
+        int waterIntense = plantMapper.getWaterIntenseByID(plant_id);
+        return saveSetting(uid, pid, plant_id, lightFreq, lightIntense, waterFreq, waterIntense);
     }
 
     public Map<Date, Integer> getRecentSetting(Long uid, Long pid, String setting) {

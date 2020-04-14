@@ -11,8 +11,12 @@ import java.util.List;
 
 @Component
 public interface SettingMapper {
-    @Insert("INSERT INTO setting VALUES (DEFAULT, #{uid}, #{pid}, #{lf}, #{li}, #{wf}, #{wi}, DEFAULT")
-    Boolean saveSetting(@Param("uid") Long uid, @Param("pid") Long pid, @Param("lf") Integer lf, @Param("li") Integer li, @Param("wf") Integer wf, @Param("wi") Integer wi);
+
+    @Select("SELECT COUNT(*) FROM setting WHERE pid = #{pid}")
+    int validatePID(@Param("pid") Long pid);
+
+    @Insert("INSERT INTO setting VALUES (DEFAULT, #{uid}, #{pid}, #{plant_id}, #{lf}, #{li}, #{wf}, #{wi}, DEFAULT")
+    Boolean saveSetting(@Param("uid") Long uid, @Param("pid") Long pid, @Param("plant_id") Long plant_id, @Param("lf") int lf, @Param("li") int li, @Param("wf") int wf, @Param("wi") int wi);
 
     @Select("SELECT * FROM setting WHERE uid = #{uid}")
     List<Setting> getSettings(@Param("uid") Long uid);
@@ -39,6 +43,25 @@ public interface SettingMapper {
             @Result(property = "plant", column = "name")
     })
     List<Pot> getPots(@Param("uid") Long uid);
+
+    @Select("SELECT d.name\n" +
+            "FROM\n" +
+            "  ( SELECT a.pid, a.plant_id, a.t\n" +
+            "    FROM\n" +
+            "      ( SELECT s.pid, s.plant_id, max(s.create_time) AS t\n" +
+            "        FROM setting s WHERE pid = #{pid} GROUP BY pid, plant_id\n" +
+            "      ) AS a\n" +
+            "      INNER JOIN (\n" +
+            "        SELECT s.pid, max(s.create_time) AS t\n" +
+            "        FROM setting s WHERE pid = #{pid} GROUP BY s.pid\n" +
+            "      ) AS b ON a.t = b.t AND a.pid = b.pid\n" +
+            "  ) c,\n" +
+            "  plant d\n" +
+            "WHERE c.plant_id = d.id")
+    String getPlantName(@Param("pid") Long pid);
+
+    @Select("SELECT pid FROM setting WHERE uid = #{uid} LIMIT 1")
+    Long getUserPot(@Param("uid") Long uid);
 
     @Select("SELECT light_freq, create_time FROM setting WHERE uid = #{uid} AND pid = #{pid} ORDER BY create_time ASC LIMIT 5")
     @Results({
