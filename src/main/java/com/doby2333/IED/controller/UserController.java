@@ -64,7 +64,7 @@ public class UserController {
                                         Map<String, Object> model, HttpSession session) {
         boolean validRegistration = userService.register(username, password);
         if (validRegistration) {
-            session.setAttribute("id", userService.getID(username, password));
+            session.setAttribute("id", userService.getID(username, password).toString());
             session.setAttribute("username", username);
             return "redirect:/login";
         } else {
