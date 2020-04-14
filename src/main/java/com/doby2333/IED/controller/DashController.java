@@ -17,7 +17,7 @@ public class DashController {
     private DashService dashService;
 
     @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
-    public String dashboard(Model model, HttpSession session, @RequestParam(value = "pid", defaultValue = "default") String p) {
+    public String dashboard(Model model, HttpSession session, @RequestParam(value = "pid", defaultValue = "") String p) {
         // if not logged in, kick user out
         if (session.getAttribute("id") == null) {
             model.addAttribute("msg", "Please Login First Before Accessing This Content!");
@@ -29,7 +29,7 @@ public class DashController {
 
         // addAttribute for displaying history settings
         Long uid = Long.parseLong((String) session.getAttribute("id"));
-        Long pid = dashService.getUserPot(uid);
+        Long pid = p.isEmpty() ? dashService.getUserPot(uid) : Long.parseLong(p);
         model.addAttribute("pid", pid);
         Date settingDate = dashService.getRecentSettingDate(uid, pid);
         Map<Date, Integer> light_freq_map = dashService.getRecentSetting(uid, pid, "light_freq");
