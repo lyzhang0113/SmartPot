@@ -63,18 +63,19 @@ public class DashService {
     public Map<Date, Integer> getRecentSetting(Long uid, Long pid, String setting) {
         Map<Date, Integer> result = new LinkedHashMap<>();
         List<SettingDto> settings = new LinkedList<>();
+        int n = 10;
         switch (setting) {
             case "light_freq":
-                settings = settingMapper.find5LightFreq(uid, pid);
+                settings = settingMapper.findRecentLightFreq(uid, pid, n);
                 break;
             case "light_intense":
-                settings = settingMapper.find5LightIntense(uid, pid);
+                settings = settingMapper.findRecentLightIntense(uid, pid, n);
                 break;
             case "water_freq":
-                settings = settingMapper.find5WaterFreq(uid, pid);
+                settings = settingMapper.findRecentWaterFreq(uid, pid, n);
                 break;
             case "water_intense":
-                settings = settingMapper.find5WaterIntense(uid, pid);
+                settings = settingMapper.findRecentWaterIntense(uid, pid, n);
                 break;
         }
         for (int i = settings.size() - 1; i >= 0; i--) {

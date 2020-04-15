@@ -63,33 +63,33 @@ public interface SettingMapper {
     @Select("SELECT pid FROM setting WHERE uid = #{uid} LIMIT 1")
     Long getUserPot(@Param("uid") Long uid);
 
-    @Select("SELECT light_freq, create_time FROM setting WHERE uid = #{uid} AND pid = #{pid} ORDER BY create_time DESC LIMIT 5")
+    @Select("SELECT light_freq, create_time FROM setting WHERE uid = #{uid} AND pid = #{pid} ORDER BY create_time DESC LIMIT #{n}")
     @Results({
             @Result(property = "value", column = "light_freq"),
             @Result(property = "time", column = "create_time")
     })
-    List<SettingDto> find5LightFreq(@Param("uid") Long uid, @Param("pid") Long pid);
+    List<SettingDto> findRecentLightFreq(@Param("uid") Long uid, @Param("pid") Long pid, @Param("n") int n);
 
-    @Select("SELECT light_intense, create_time FROM setting WHERE uid = #{uid} AND pid = #{pid} ORDER BY create_time DESC LIMIT 5")
+    @Select("SELECT light_intense, create_time FROM setting WHERE uid = #{uid} AND pid = #{pid} ORDER BY create_time DESC LIMIT #{n}")
     @Results({
             @Result(property = "value", column = "light_intense"),
             @Result(property = "time", column = "create_time")
     })
-    List<SettingDto> find5LightIntense(@Param("uid") Long uid, @Param("pid") Long pid);
+    List<SettingDto> findRecentLightIntense(@Param("uid") Long uid, @Param("pid") Long pid, @Param("n") int n);
 
-    @Select("SELECT water_freq, create_time FROM setting WHERE uid = #{uid} AND pid = #{pid} ORDER BY create_time DESC LIMIT 5")
+    @Select("SELECT water_freq, create_time FROM setting WHERE uid = #{uid} AND pid = #{pid} ORDER BY create_time DESC LIMIT #{n}")
     @Results({
             @Result(property = "value", column = "water_freq"),
             @Result(property = "time", column = "create_time")
     })
-    List<SettingDto> find5WaterFreq(@Param("uid") Long uid, @Param("pid") Long pid);
+    List<SettingDto> findRecentWaterFreq(@Param("uid") Long uid, @Param("pid") Long pid, @Param("n") int n);
 
-    @Select("SELECT water_intense, create_time FROM setting WHERE uid = #{uid} AND pid = #{pid} ORDER BY create_time DESC LIMIT 5")
+    @Select("SELECT water_intense, create_time FROM setting WHERE uid = #{uid} AND pid = #{pid} ORDER BY create_time DESC LIMIT #{n}")
     @Results({
             @Result(property = "value", column = "water_intense"),
             @Result(property = "time", column = "create_time")
     })
-    List<SettingDto> find5WaterIntense(@Param("uid") Long uid, @Param("pid") Long pid);
+    List<SettingDto> findRecentWaterIntense(@Param("uid") Long uid, @Param("pid") Long pid, @Param("n") int n);
 
     @Select("SELECT create_time FROM setting WHERE uid = #{uid} AND pid = #{pid} ORDER BY create_time DESC LIMIT 1")
     Date findRecentSettingDate(@Param("uid") Long uid, @Param("pid") Long pid);
