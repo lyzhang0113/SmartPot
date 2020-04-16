@@ -3,6 +3,7 @@ package com.doby2333.IED.service;
 import com.doby2333.IED.dto.PlantDto;
 import com.doby2333.IED.dto.PotDto;
 import com.doby2333.IED.dto.SettingDto;
+import com.doby2333.IED.entity.Setting;
 import com.doby2333.IED.mapper.PlantMapper;
 import com.doby2333.IED.mapper.SettingMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,7 +64,7 @@ public class DashService {
     public Map<Date, Integer> getRecentSetting(Long uid, Long pid, String setting) {
         Map<Date, Integer> result = new LinkedHashMap<>();
         List<SettingDto> settings = new LinkedList<>();
-        int n = 10;
+        final int n = 10;
         switch (setting) {
             case "light_freq":
                 settings = settingMapper.findRecentLightFreq(uid, pid, n);
@@ -82,6 +83,10 @@ public class DashService {
             result.put(settings.get(i).getTime(), settings.get(i).getValue());
         }
         return result;
+    }
+
+    public Setting getMostRecentSetting(Long uid, Long pid) {
+        return settingMapper.findRecentSetting(uid, pid);
     }
 
     public Date getRecentSettingDate(Long uid, Long pid) {

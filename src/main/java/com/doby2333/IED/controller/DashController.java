@@ -68,6 +68,7 @@ public class DashController {
         model.addAttribute("pot_count", dashService.countPots(uid));
         model.addAttribute("plant_name", dashService.getPlantNameByPID(pid));
         model.addAttribute("plants", dashService.getPlants());
+        model.addAttribute("curr_setting", dashService.getMostRecentSetting(uid, pid));
         return "pot_setting";
     }
 

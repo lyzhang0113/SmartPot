@@ -462,7 +462,7 @@
                     <!-- Basic Setting Content Start -->
                     <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="main-card mb-md-5 card">
                                     <div class="card-body"><h5 class="card-title">Please Select the Plant you want to
                                         set for Pot [[${pid}]]:</h5>
@@ -490,203 +490,47 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="main-card mb-3 card">
-                                    <div class="card-body"><h5 class="card-title">Input Groups</h5>
-                                        <div>
-                                            <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text">@</span>
-                                                </div>
-                                                <input class="form-control" placeholder="username" type="text"></div>
-                                            <br>
-                                            <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text"><input
-                                                        aria-label="Checkbox for following text input" class=""
-                                                        type="checkbox"></span></div>
-                                                <input class="form-control" placeholder="Check it out" type="text">
+                                    <div class="card-body"><h5 class="card-title">Advanced Settings</h5>
+                                        <form class="" method="post" th:action="@{/saveSetting(pid=${pid})}">
+                                            <div class="position-relative form-group">
+                                                <label class="" for="exampleSelect">Select Another Plant</label>
+                                                <select class="form-control" id="exampleSelect"
+                                                        name="plant_id">
+                                                    <option th:each="p : ${plants.getPlants()}" th:text="${p.getName()}"
+                                                            th:value="${p.getId()}">Plant
+                                                    </option>
+                                                </select>
                                             </div>
-                                            <br>
-                                            <div class="input-group"><input class="form-control" placeholder="username"
-                                                                            type="text">
-                                                <div class="input-group-append"><span class="input-group-text">@example.com</span>
-                                                </div>
+                                            <div class="position-relative form-group">
+                                                <label class="">Light Frequency</label>
+                                                <input class="form-control" id="light_freq" max="100" min="0"
+                                                       name="light_freq"
+                                                       th:placeholder="'Current Setting: '+ ${curr_setting.getLight_freq()}"
+                                                       type="number">
                                             </div>
-                                            <br>
-                                            <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text">$</span><span
-                                                        class="input-group-text">$</span></div>
-                                                <input class="form-control" placeholder="Dolla dolla billz yo!"
-                                                       type="text">
-                                                <div class="input-group-append"><span
-                                                        class="input-group-text">$</span><span class="input-group-text">$</span>
-                                                </div>
+                                            <div class="position-relative form-group">
+                                                <label class="">Light Intensity</label>
+                                                <input class="form-control" id="light_intense" max="100" min="0"
+                                                       name="light_intense"
+                                                       th:placeholder="'Current Setting: '+ ${curr_setting.getLight_intense()}"
+                                                       type="number">
                                             </div>
-                                            <br>
-                                            <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text">$</span>
-                                                </div>
-                                                <input class="form-control" placeholder="Amount" step="1" type="number">
-                                                <div class="input-group-append"><span
-                                                        class="input-group-text">.00</span></div>
+                                            <div class="position-relative form-group">
+                                                <label class="">Water Frequency</label>
+                                                <input class="form-control" id="water_freq" max="100" min="0"
+                                                       name="water_freq"
+                                                       th:placeholder="'Current Setting: '+ ${curr_setting.getWater_freq()}"
+                                                       type="number">
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-card mb-3 card">
-                                    <div class="card-body"><h5 class="card-title">Input Group Button Dropdown</h5>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <button aria-expanded="false" aria-haspopup="true"
-                                                        class="dropdown-toggle btn btn-secondary" data-toggle="dropdown"
-                                                        type="button">Button Dropdown
-                                                </button>
-                                                <div aria-hidden="true" class="dropdown-menu" role="menu" tabindex="-1">
-                                                    <h6 class="dropdown-header" tabindex="-1">Header</h6>
-                                                    <button class="disabled dropdown-item" disabled="" tabindex="-1"
-                                                            type="button">Action
-                                                    </button>
-                                                    <button class="dropdown-item" tabindex="0" type="button">Another
-                                                        Action
-                                                    </button>
-                                                    <div class="dropdown-divider" tabindex="-1"></div>
-                                                    <button class="dropdown-item" tabindex="0" type="button">Another
-                                                        Action
-                                                    </button>
-                                                </div>
+                                            <div class="position-relative form-group">
+                                                <label class="">Water Intensity</label>
+                                                <input class="form-control" id="water_intense" max="100" min="0"
+                                                       name="water_intense"
+                                                       th:placeholder="'Current Setting: '+ ${curr_setting.getWater_intense()}"
+                                                       type="number">
                                             </div>
-                                            <input class="form-control" type="text"></div>
-                                    </div>
-                                </div>
-                                <div class="main-card mb-3 card">
-                                    <div class="card-body"><h5 class="card-title">Input Group Button Shorthand</h5>
-                                        <div>
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <button class="btn btn-secondary">To the Left!</button>
-                                                </div>
-                                                <input class="form-control" type="text"></div>
-                                            <br>
-                                            <div class="input-group"><input class="form-control" type="text">
-                                                <div class="input-group-append">
-                                                    <button class="btn btn-secondary">To the Right!</button>
-                                                </div>
-                                            </div>
-                                            <br>
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <button class="btn btn-danger">To the Left!</button>
-                                                </div>
-                                                <input class="form-control" placeholder="and..." type="text">
-                                                <div class="input-group-append">
-                                                    <button class="btn btn-success">To the Right!</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="main-card mb-3 card">
-                                    <div class="card-body"><h5 class="card-title">Input Group Sizing</h5>
-                                        <div>
-                                            <div class="input-group input-group-lg">
-                                                <div class="input-group-prepend"><span
-                                                        class="input-group-text">@lg</span></div>
-                                                <input class="form-control" type="text"></div>
-                                            <br>
-                                            <div class="input-group">
-                                                <div class="input-group-prepend"><span
-                                                        class="input-group-text">@normal</span></div>
-                                                <input class="form-control" type="text"></div>
-                                            <br>
-                                            <div class="input-group input-group-sm">
-                                                <div class="input-group-prepend"><span
-                                                        class="input-group-text">@sm</span></div>
-                                                <input class="form-control" type="text"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-card mb-3 card">
-                                    <div class="card-body"><h5 class="card-title">Input Group Addon</h5>
-                                        <div>
-                                            <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text">To the Left!</span>
-                                                </div>
-                                                <input class="form-control" type="text"></div>
-                                            <br>
-                                            <div class="input-group"><input class="form-control" type="text">
-                                                <div class="input-group-append"><span class="input-group-text">To the Right!</span>
-                                                </div>
-                                            </div>
-                                            <br>
-                                            <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text">To the Left!</span>
-                                                </div>
-                                                <input class="form-control" placeholder="and..." type="text">
-                                                <div class="input-group-append"><span class="input-group-text">To the Right!</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-card mb-3 card">
-                                    <div class="card-body"><h5 class="card-title">Input Group Button</h5>
-                                        <div>
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <button class="btn btn-secondary">I'm a button</button>
-                                                </div>
-                                                <input class="form-control" type="text"></div>
-                                            <br>
-                                            <div class="input-group"><input class="form-control" type="text">
-                                                <div class="input-group-append">
-                                                    <button aria-expanded="false" aria-haspopup="true"
-                                                            class="dropdown-toggle btn btn-secondary"
-                                                            data-toggle="dropdown" type="button">Button Dropdown
-                                                    </button>
-                                                    <div aria-hidden="true" class="dropdown-menu" role="menu"
-                                                         tabindex="-1"><h6 class="dropdown-header" tabindex="-1">
-                                                        Header</h6>
-                                                        <button class="disabled dropdown-item" disabled="" tabindex="-1"
-                                                                type="button">Action
-                                                        </button>
-                                                        <button class="dropdown-item" tabindex="0" type="button">Another
-                                                            Action
-                                                        </button>
-                                                        <div class="dropdown-divider" tabindex="-1"></div>
-                                                        <button class="dropdown-item" tabindex="0" type="button">Another
-                                                            Action
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <br>
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <button class="btn btn-outline-secondary">Split Button</button>
-                                                    <button aria-expanded="false" aria-haspopup="true"
-                                                            class="dropdown-toggle dropdown-toggle-split btn btn-outline-secondary"
-                                                            data-toggle="dropdown" type="button"><span
-                                                            class="sr-only">Toggle Dropdown</span></button>
-                                                    <div aria-hidden="true" class="dropdown-menu" role="menu"
-                                                         tabindex="-1"><h6 class="dropdown-header" tabindex="-1">
-                                                        Header</h6>
-                                                        <button class="disabled dropdown-item" disabled="" tabindex="-1"
-                                                                type="button">Action
-                                                        </button>
-                                                        <button class="dropdown-item" tabindex="0" type="button">Another
-                                                            Action
-                                                        </button>
-                                                        <div class="dropdown-divider" tabindex="-1"></div>
-                                                        <button class="dropdown-item" tabindex="0" type="button">Another
-                                                            Action
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <input class="form-control" placeholder="and..." type="text">
-                                                <div class="input-group-append">
-                                                    <button class="btn btn-secondary">I'm a button</button>
-                                                </div>
-                                            </div>
-                                        </div>
+                                            <button class="mt-1 btn btn-primary" type="submit">Save</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

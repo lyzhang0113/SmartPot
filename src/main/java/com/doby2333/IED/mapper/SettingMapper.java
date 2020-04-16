@@ -91,6 +91,9 @@ public interface SettingMapper {
     })
     List<SettingDto> findRecentWaterIntense(@Param("uid") Long uid, @Param("pid") Long pid, @Param("n") int n);
 
+    @Select("SELECT * FROM setting WHERE uid = #{uid} AND pid = #{pid} ORDER BY create_time DESC LIMIT 1")
+    Setting findRecentSetting(@Param("uid") Long uid, @Param("pid") Long pid);
+
     @Select("SELECT create_time FROM setting WHERE uid = #{uid} AND pid = #{pid} ORDER BY create_time DESC LIMIT 1")
     Date findRecentSettingDate(@Param("uid") Long uid, @Param("pid") Long pid);
 
