@@ -53,7 +53,7 @@
         </div>
         <div class="app-header__content">
             <div class="app-header-left">
-                <span style="font-size: 200%; vertical-align: middle;">You can change the settings on pots here!</span>
+                <span style="font-size: 200%; vertical-align: middle;">You can register/remove pots here!</span>
             </div>
             <div class="app-header-right">
                 <div class="header-btn-lg pr-0">
@@ -387,16 +387,16 @@
                 <div class="app-sidebar__inner">
                     <ul class="vertical-nav-menu">
                         <li class="app-sidebar__heading">Dashboards</li>
-                        <li><a href="/dashboard"><i class="metismenu-icon pe-7s-rocket"></i>Plant Status</a></li>
+                        <li><a href="/dashboard"><i class="metismenu-icon pe-7s-monitor"></i>Plant Status</a></li>
                         <li class="app-sidebar__heading">Pot Settings</li>
-                        <li><a href="/dashboard/setting"><i class="metismenu-icon pe-7s-diamond"></i>Change
+                        <li><a href="/dashboard/setting"><i class="metismenu-icon pe-7s-paint-bucket"></i>Change
                             Pot Setting<i class="metismenu-state-icon pe-7s-angle-down caret-left"></i></a></li>
                         <li class="app-sidebar__heading">Pot Management</li>
                         <li><a class="mm-active" href="/dashboard/register"><i
-                                class="metismenu-icon pe-7s-display2"></i>Add/Remove Pots</a>
+                                class="metismenu-icon pe-7s-hourglass"></i>Add/Remove Pots</a>
                         </li>
                         <li class="app-sidebar__heading">User Account</li>
-                        <li><a href="/account/setting"><i class="metismenu-icon pe-7s-mouse"></i>Account Settings</a>
+                        <li><a href="/account/setting"><i class="metismenu-icon pe-7s-lock"></i>Account Settings</a>
                         </li>
                     </ul>
                 </div>
@@ -409,7 +409,7 @@
                     <div class="page-title-wrapper">
                         <div class="page-title-heading">
                             <div class="page-title-icon">
-                                <i class="pe-7s-paint-bucket icon-gradient bg-mean-fruit"></i>
+                                <i class="pe-7s-hourglass icon-gradient bg-mean-fruit"></i>
                             </div>
                             <div th:if="${pot_count > 0}">You currently have [[${pot_count}]] pots!</div>
                             <div th:if="${pot_count == 0}">You have no pot in you account!</div>
