@@ -4,8 +4,6 @@ import com.doby2333.IED.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.validation.constraints.Null;
-
 @Service
 public class UserService {
 
@@ -14,7 +12,12 @@ public class UserService {
 
     // returns true if the given username and password is valid
     public boolean validateUser(String username, String password) {
-        return userMapper.validate(username, password) != 0;
+        return userMapper.validateByUsername(username, password) != 0;
+    }
+
+    // returns true if the given username and password is valid
+    public boolean validateUser(Long uid, String password) {
+        return userMapper.validateByID(uid, password) != 0;
     }
 
     public Long getID(String username, String password) {
@@ -34,5 +37,14 @@ public class UserService {
         if (countCurrUser != 0) return false;
         userMapper.register(username, password);
         return true;
+    }
+
+    public boolean changePassword(Long uid, String curr_p, String new_p) {
+        if (validateUser(uid, curr_p)) {
+            userMapper.changePassword(uid, new_p);
+            return true;
+        } else {
+            return false;
+        }
     }
 }

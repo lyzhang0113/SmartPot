@@ -1,5 +1,6 @@
 package com.doby2333.IED.controller;
 
+import com.doby2333.IED.service.DashService;
 import com.doby2333.IED.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private DashService dashService;
 
     @RequestMapping(value = {"/", "/hello", "/welcome"}, method = RequestMethod.GET)
     public String welcome(Map<String, Object> model, HttpSession session) {
@@ -79,6 +83,25 @@ public class UserController {
         if (session.getAttribute("id") == null) {
             model.addAttribute("msg", "Please Login First Before Accessing This Content!");
             return "redirect:/login";
+        }
+        Long uid = Long.parseLong((String) session.getAttribute("id"));
+        model.addAttribute("pot_count", dashService.countPots(uid));
+        return "account_setting";
+    }
+
+    @PostMapping("/account/setting")
+    public String changePassword(Model model, HttpSession session, @RequestParam("curr") String pass, @RequestParam("new") String new_pass) {
+        // if not logged in, kick user out
+        if (session.getAttribute("id") == null) {
+            model.addAttribute("msg", "Please Login First Before Accessing This Content!");
+            return "redirect:/login";
+        }
+        Long uid = Long.parseLong((String) session.getAttribute("id"));
+        model.addAttribute("pot_count", dashService.countPots(uid));
+        if (userService.changePassword(uid, pass, new_pass)) {
+            model.addAttribute("msg", "Password has been changed successfully!");
+        } else {
+            model.addAttribute("warn", "Failed! Current Password you entered is incorrect!");
         }
         return "account_setting";
     }
