@@ -49,6 +49,11 @@ public class DashService {
         return true;
     }
 
+    public boolean removePot(Long uid, Long pid) {
+        if (settingMapper.validatePID(pid) == 0) return false;
+        return settingMapper.removePot(uid, pid);
+    }
+
     public Boolean saveSetting(Long uid, Long pid, Long plant_id, Integer lightFreq, Integer lightIntense, Integer waterFreq, Integer waterIntense) {
         return settingMapper.saveSetting(uid, pid, plant_id, lightFreq, lightIntense, waterFreq, waterIntense);
     }

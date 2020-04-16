@@ -18,6 +18,9 @@ public interface SettingMapper {
     @Insert("INSERT INTO setting VALUES (DEFAULT, #{uid}, #{pid}, #{plant_id}, #{lf}, #{li}, #{wf}, #{wi}, DEFAULT)")
     Boolean saveSetting(@Param("uid") Long uid, @Param("pid") Long pid, @Param("plant_id") Long plant_id, @Param("lf") int lf, @Param("li") int li, @Param("wf") int wf, @Param("wi") int wi);
 
+    @Delete("DELETE FROM setting WHERE uid = #{uid} AND pid = #{pid}")
+    Boolean removePot(@Param("uid") Long uid, @Param("pid") Long pid);
+
     @Select("SELECT * FROM setting WHERE uid = #{uid}")
     List<Setting> getSettings(@Param("uid") Long uid);
 

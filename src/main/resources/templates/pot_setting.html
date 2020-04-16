@@ -63,7 +63,8 @@
                                 <div class="widget-heading">
                                     <div>Pots Registered: [[${pot_count}]]</div>
                                 </div>
-                                <div class="widget-subheading"><a href="/dashboard/register"> Register More! </a></div>
+                                <div class="widget-subheading"><a th:href="@{/dashboard/register}"> Register More! </a>
+                                </div>
                             </div>
                             <div class="widget-content-right header-user-info ml-3">
                                 <form action="/logout" method="post">
@@ -390,8 +391,9 @@
                         <li class="app-sidebar__heading">Pot Settings</li>
                         <li><a class="mm-active" href="/dashboard/setting"><i class="metismenu-icon pe-7s-diamond"></i>Change
                             Pot Setting<i class="metismenu-state-icon pe-7s-angle-down caret-left"></i></a></li>
-                        <li class="app-sidebar__heading">Pot Registration</li>
-                        <li><a href="/dashboard/register"><i class="metismenu-icon pe-7s-display2"></i>Register New Pots</a>
+                        <li class="app-sidebar__heading">Pot Management</li>
+                        <li><a href="/dashboard/register"><i class="metismenu-icon pe-7s-display2"></i>Add/Remove
+                            Pots</a>
                         </li>
                         <li class="app-sidebar__heading">User Account</li>
                         <li><a href="/account/setting"><i class="metismenu-icon pe-7s-mouse"></i>Account Settings</a>
@@ -547,12 +549,7 @@
                             <ul class="nav">
                                 <li class="nav-item">
                                     <a class="nav-link" href="javascript:void(0);">
-                                        Footer Link 1
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="javascript:void(0);">
-                                        Footer Link 2
+                                        Welcome Page
                                     </a>
                                 </li>
                             </ul>
@@ -561,15 +558,10 @@
                             <ul class="nav">
                                 <li class="nav-item">
                                     <a class="nav-link" href="javascript:void(0);">
-                                        Footer Link 3
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="javascript:void(0);">
-                                        <div class="badge badge-success mr-1 ml-0">
-                                            <small>NEW</small>
-                                        </div>
-                                        Footer Link 4
+                                        <form action="/logout" method="post">
+                                            <button class="btn-shadow p-1 btn btn-focus btn-md" type="submit">Logout
+                                            </button>
+                                        </form>
                                     </a>
                                 </li>
                             </ul>

@@ -80,18 +80,46 @@ public class DashController {
             return "redirect:/login";
         }
         Long uid = Long.parseLong((String) session.getAttribute("id"));
+        model.addAttribute("username", session.getAttribute("username"));
         model.addAttribute("pot_count", dashService.countPots(uid));
+        model.addAttribute("pots", dashService.getPots(uid));
         return "register_pot";
     }
 
     @PostMapping("/dashboard/register")
     public String registerPot(Model model, HttpSession session, @RequestParam("pid") Long pid) {
+        if (session.getAttribute("id") == null) {
+            model.addAttribute("msg", "Please Login to Save Settings!");
+            return "redirect:/login";
+        }
         if (dashService.registerPot(Long.parseLong((String) session.getAttribute("id")), pid)) {
             model.addAttribute("msg", "Registration Completed! You have successfully registered Pot " + pid + "!");
         } else {
             model.addAttribute("warn", "Registration Failed! This pot has already been registered!");
         }
+        Long uid = Long.parseLong((String) session.getAttribute("id"));
+        model.addAttribute("username", session.getAttribute("username"));
+        model.addAttribute("pot_count", dashService.countPots(uid));
+        model.addAttribute("pots", dashService.getPots(uid));
         return "register_pot";
+    }
+
+    @PostMapping("/dashboard/remove")
+    public String removePot(Model model, HttpSession session, @RequestParam("pid") Long pid) {
+        if (session.getAttribute("id") == null) {
+            model.addAttribute("msg", "Please Login to Save Settings!");
+            return "redirect:/login";
+        }
+        if (dashService.removePot(Long.parseLong((String) session.getAttribute("id")), pid)) {
+            model.addAttribute("msg", "You have successfully removed Pot " + pid + "!");
+        } else {
+            model.addAttribute("warn", "ERROR! The pot " + pid + " could not be removed!");
+        }
+        Long uid = Long.parseLong((String) session.getAttribute("id"));
+        model.addAttribute("username", session.getAttribute("username"));
+        model.addAttribute("pot_count", dashService.countPots(uid));
+        model.addAttribute("pots", dashService.getPots(uid));
+        return "redirect:/dashboard/register";
     }
 
     @PostMapping("/saveSetting")
