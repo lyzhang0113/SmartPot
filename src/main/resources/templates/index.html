@@ -54,19 +54,10 @@
   </header>
   <div class="banner" >
     <div class="container">
-      <h1 class="font-weight-semibold">SmartPot</h1>
-      <h5 class="font-weight-normal text-muted pb-3">Many people worldwide have difficulties taking care of plants.<br>We
-        want to change that.</h5>
-      <div>
-        <a th:href="@{/register}">
-          <button class="btn btn-opacity-light mr-1">Get started</button>
-        </a>
-        <a href="#features-section">
-          <button class="btn btn-opacity-success ml-1">Learn more</button>
-        </a>
-      </div>
-      <!-- smart pot image-->
-      <img th:src="@{img/Group171.svg}" alt="" class="img-fluid">
+        <h1 class="font-weight-semibold">SmartPot</h1>
+        <h5 class="font-weight-normal text-muted pb-3">Many people worldwide have difficulties taking care of plants.
+            <br>We want to change that.</h5>
+        <img alt="" class="" height="380px" th:src="@{img/pot.png}">
     </div>
   </div>
   <div class="content-wrapper">
@@ -105,127 +96,128 @@
         </div>
       </section>     
       <section class="digital-marketing-service" id="digital-marketing-section">
-        <div class="row align-items-center">
-          <div class="col-12 col-lg-7 grid-margin grid-margin-lg-0" data-aos="fade-right">
-            <h3 class="m-0">Modular Design</h3>
-            <div class="col-lg-7 col-xl-6 p-0">
-              <!--p class="py-4 m-0 text-muted">Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce egeabus consectetuer turpis, suspendisse.</p-->
-              <p class="font-weight-medium text-muted">The plant and the reservoir could be separated so that the user
-                could clean the reservoir easily.</p>
-            </div>    
+          <div class="row align-items-center">
+              <div class="col-12 col-lg-5 grid-margin grid-margin-lg-0" data-aos="fade-right">
+                  <h3 class="m-0">Modular Design</h3>
+                  <div class="col-lg-7 col-xl-6 p-0">
+                      <p class="font-weight-medium text-muted">The plant and the reservoir could be separated so that
+                          the user
+                          could clean the reservoir easily.</p>
+                  </div>
+              </div>
+              <div class="col-12 col-lg-7 p-0 img-digital grid-margin grid-margin-lg-0" data-aos="fade-left">
+                  <img alt="" height="400px" th:src="@{img/pot-explode.png}">
+              </div>
           </div>
-          <div class="col-12 col-lg-5 p-0 img-digital grid-margin grid-margin-lg-0" data-aos="fade-left">
-            <img th:src="@{img/Group1.png}" alt="" class="img-fluid">
-          </div>
-        </div>
         <div class="row align-items-center">
           <div class="col-12 col-lg-7 text-center flex-item grid-margin" data-aos="fade-right">
             <img alt="" class="img-fluid" th:src="@{img/UIandDatabase.png}">
           </div>
-          <div class="col-12 col-lg-5 flex-item grid-margin" data-aos="fade-left">
-            <h3 class="m-0">Plant Database</h3>
-            <div class="col-lg-9 col-xl-8 p-0">
-              <!--p class="py-4 m-0 text-muted">hello world</p-->
-              <p class="pb-2 font-weight-medium text-muted">SmartPot comes with a built-in database with all kinds of
-                plant data for the user to easily select the perfect default setting for any plant. </p>
+            <div class="col-12 col-lg-5 flex-item grid-margin grid-margin-lg-0" data-aos="fade-left">
+                <h3 class="m-0">Plant Database</h3>
+                <div class="col-lg-9 col-xl-8 p-0">
+                    <!--p class="py-4 m-0 text-muted">hello world</p-->
+                    <p class="pb-2 font-weight-medium text-muted">SmartPot comes with a built-in database with all kinds
+                        of
+                        plant data for the user to easily select the perfect default setting for any plant. </p>
+                </div>
+                <!--button class="btn btn-info">Readmore</button-->
             </div>
-            <!--button class="btn btn-info">Readmore</button-->
-          </div>
         </div>
-      </section>     
-      <section class="case-studies" id="case-studies-section">
-        <div class="row grid-margin">
-          <div class="col-12 text-center pb-5">
-            <h2>More Pictures</h2>
-            <!--h6 class="section-subtitle text-muted">Lorem ipsum dolor sit amet, tincidunt vestibulum.</h6-->
-          </div>
-          <div class="col-12 col-md-6 col-lg-3 stretch-card mb-3 mb-lg-0" data-aos="zoom-in">
-            <div class="card color-cards">
-              <div class="card-body p-0">
-                <div class="bg-primary text-center card-contents">
-                  <div class="card-image">
-                    <img th:src="@{img/Group95.svg}" class="case-studies-card-img" alt="">
-                  </div>  
-                  <div class="card-desc-box d-flex align-items-center justify-content-around">
-                    <div>
-                      <h6 class="text-white pb-2 px-3">Know more about Online marketing</h6>
-                      <button class="btn btn-white">Read More</button>
-                    </div>
-                  </div>
-                </div>   
-                <div class="card-details text-center pt-4">
-                    <h6 class="m-0 pb-1">Online Marketing</h6>
-                    <p>Seo, Marketing</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-md-6 col-lg-3 stretch-card mb-3 mb-lg-0" data-aos="zoom-in" data-aos-delay="200">
-            <div class="card color-cards">
-              <div class="card-body p-0">
-                <div class="bg-warning text-center card-contents">
-                  <div class="card-image">
-                      <img th:src="@{img/Group108.svg}" class="case-studies-card-img" alt="">
-                  </div>  
-                  <div class="card-desc-box d-flex align-items-center justify-content-around">
-                    <div>
-                      <h6 class="text-white pb-2 px-3">Know more about Web Development</h6>
-                      <button class="btn btn-white">Read More</button>
-                    </div>
-                  </div>
-                </div>   
-                <div class="card-details text-center pt-4">
-                    <h6 class="m-0 pb-1">Web Development</h6>
-                    <p>Developing, Designing</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-md-6 col-lg-3 stretch-card mb-3 mb-lg-0" data-aos="zoom-in" data-aos-delay="400">
-            <div class="card color-cards">
-              <div class="card-body p-0">
-                <div class="bg-violet text-center card-contents">
-                  <div class="card-image">
-                      <img th:src="@{img/Group126.svg}" class="case-studies-card-img" alt="">
-                  </div>  
-                  <div class="card-desc-box d-flex align-items-center justify-content-around">
-                    <div>
-                      <h6 class="text-white pb-2 px-3">Know more about Web Designing</h6>
-                      <button class="btn btn-white">Read More</button>
-                    </div>
-                  </div>
-                </div>   
-                <div class="card-details text-center pt-4">
-                    <h6 class="m-0 pb-1">Web Designing</h6>
-                    <p>Designing, Developing</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-md-6 col-lg-3 stretch-card" data-aos="zoom-in" data-aos-delay="600">
-            <div class="card color-cards">
-              <div class="card-body p-0">
-                <div class="bg-success text-center card-contents">
-                  <div class="card-image">
-                    <img alt="" class="case-studies-card-img" th:src="@{img/Group115.svg}">
-                  </div>  
-                  <div class="card-desc-box d-flex align-items-center justify-content-around">
-                    <div>
-                      <h6 class="text-white pb-2 px-3">Know more about Software Development</h6>
-                      <button class="btn btn-white">Read More</button>
-                    </div>
-                  </div>
-                </div>   
-                <div class="card-details text-center pt-4">
-                    <h6 class="m-0 pb-1">Software Development</h6>
-                    <p>Developing, Designing</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>     
-      <section class="customer-feedback" id="feedback-section">
+      </section>
+        <!--      <section class="case-studies" id="case-studies-section">-->
+        <!--        <div class="row grid-margin">-->
+        <!--          <div class="col-12 text-center pb-5">-->
+        <!--            <h2>More Pictures</h2>-->
+        <!--            &lt;!&ndash;h6 class="section-subtitle text-muted">Lorem ipsum dolor sit amet, tincidunt vestibulum.</h6&ndash;&gt;-->
+        <!--          </div>-->
+        <!--          <div class="col-12 col-md-6 col-lg-3 stretch-card mb-3 mb-lg-0" data-aos="zoom-in">-->
+        <!--            <div class="card color-cards">-->
+        <!--              <div class="card-body p-0">-->
+        <!--                <div class="bg-primary text-center card-contents">-->
+        <!--                  <div class="card-image">-->
+        <!--                    <img th:src="@{img/Group95.svg}" class="case-studies-card-img" alt="">-->
+        <!--                  </div>  -->
+        <!--                  <div class="card-desc-box d-flex align-items-center justify-content-around">-->
+        <!--                    <div>-->
+        <!--                      <h6 class="text-white pb-2 px-3">Know more about Online marketing</h6>-->
+        <!--                      <button class="btn btn-white">Read More</button>-->
+        <!--                    </div>-->
+        <!--                  </div>-->
+        <!--                </div>   -->
+        <!--                <div class="card-details text-center pt-4">-->
+        <!--                    <h6 class="m-0 pb-1">Online Marketing</h6>-->
+        <!--                    <p>Seo, Marketing</p>-->
+        <!--                </div>-->
+        <!--              </div>-->
+        <!--            </div>-->
+        <!--          </div>-->
+        <!--          <div class="col-12 col-md-6 col-lg-3 stretch-card mb-3 mb-lg-0" data-aos="zoom-in" data-aos-delay="200">-->
+        <!--            <div class="card color-cards">-->
+        <!--              <div class="card-body p-0">-->
+        <!--                <div class="bg-warning text-center card-contents">-->
+        <!--                  <div class="card-image">-->
+        <!--                      <img th:src="@{img/Group108.svg}" class="case-studies-card-img" alt="">-->
+        <!--                  </div>  -->
+        <!--                  <div class="card-desc-box d-flex align-items-center justify-content-around">-->
+        <!--                    <div>-->
+        <!--                      <h6 class="text-white pb-2 px-3">Know more about Web Development</h6>-->
+        <!--                      <button class="btn btn-white">Read More</button>-->
+        <!--                    </div>-->
+        <!--                  </div>-->
+        <!--                </div>   -->
+        <!--                <div class="card-details text-center pt-4">-->
+        <!--                    <h6 class="m-0 pb-1">Web Development</h6>-->
+        <!--                    <p>Developing, Designing</p>-->
+        <!--                </div>-->
+        <!--              </div>-->
+        <!--            </div>-->
+        <!--          </div>-->
+        <!--          <div class="col-12 col-md-6 col-lg-3 stretch-card mb-3 mb-lg-0" data-aos="zoom-in" data-aos-delay="400">-->
+        <!--            <div class="card color-cards">-->
+        <!--              <div class="card-body p-0">-->
+        <!--                <div class="bg-violet text-center card-contents">-->
+        <!--                  <div class="card-image">-->
+        <!--                      <img th:src="@{img/Group126.svg}" class="case-studies-card-img" alt="">-->
+        <!--                  </div>  -->
+        <!--                  <div class="card-desc-box d-flex align-items-center justify-content-around">-->
+        <!--                    <div>-->
+        <!--                      <h6 class="text-white pb-2 px-3">Know more about Web Designing</h6>-->
+        <!--                      <button class="btn btn-white">Read More</button>-->
+        <!--                    </div>-->
+        <!--                  </div>-->
+        <!--                </div>   -->
+        <!--                <div class="card-details text-center pt-4">-->
+        <!--                    <h6 class="m-0 pb-1">Web Designing</h6>-->
+        <!--                    <p>Designing, Developing</p>-->
+        <!--                </div>-->
+        <!--              </div>-->
+        <!--            </div>-->
+        <!--          </div>-->
+        <!--          <div class="col-12 col-md-6 col-lg-3 stretch-card" data-aos="zoom-in" data-aos-delay="600">-->
+        <!--            <div class="card color-cards">-->
+        <!--              <div class="card-body p-0">-->
+        <!--                <div class="bg-success text-center card-contents">-->
+        <!--                  <div class="card-image">-->
+        <!--                    <img alt="" class="case-studies-card-img" th:src="@{img/Group115.svg}">-->
+        <!--                  </div>  -->
+        <!--                  <div class="card-desc-box d-flex align-items-center justify-content-around">-->
+        <!--                    <div>-->
+        <!--                      <h6 class="text-white pb-2 px-3">Know more about Software Development</h6>-->
+        <!--                      <button class="btn btn-white">Read More</button>-->
+        <!--                    </div>-->
+        <!--                  </div>-->
+        <!--                </div>   -->
+        <!--                <div class="card-details text-center pt-4">-->
+        <!--                    <h6 class="m-0 pb-1">Software Development</h6>-->
+        <!--                    <p>Developing, Designing</p>-->
+        <!--                </div>-->
+        <!--              </div>-->
+        <!--            </div>-->
+        <!--          </div>-->
+        <!--        </div>-->
+        <!--      </section>     -->
+        <section class="customer-feedback" id="feedback-section">
         <div class="row">
           <div class="col-12 text-center pb-5">
             <h2>Introduce the SmartPot Team</h2>
