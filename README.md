@@ -1,6 +1,6 @@
-# IEDProject-SmartPot
+# SmartPot
 This repository includes the Web app developed using Java Spring Boot Framework for 2020 Spring Intro to Engineering Design at RPI.
-## Smart Pot
+## Product
 Smart Pot is the project our team came up with, the product is a pot with integrated automated functions which waters and lights the plant as needed.
 ## Installation and Usage
 1. Clone this repository
